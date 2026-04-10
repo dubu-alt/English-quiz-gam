@@ -1,0 +1,89 @@
+{
+  "quizzes": [
+    {
+      "question": "다음 단어의 뜻은?",
+      "choices": [
+        "매우 행복한",
+        "슬픈",
+        "화난",
+        "피곤한"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "'persevere'의 뜻은?",
+      "choices": [
+        "포기하다",
+        "끈기 있게 계속하다",
+        "도망치다",
+        "숨다"
+      ],
+      "answer": 2
+    },
+    {
+      "question": "'ephemeral'의 뜻은?",
+      "choices": [
+        "오래 지속되는",
+        "매우 짧은 시간 동안 존재하는",
+        "강력한",
+        "약한"
+      ],
+      "answer": 2
+    },
+    {
+      "question": "'benevolent'의 뜻은?",
+      "choices": [
+        "악의 있는",
+        "선의의 친절한",
+        "게으른",
+        "활발한"
+      ],
+      "answer": 2
+    },
+    {
+      "question": "'ubiquitous'의 뜻은?",
+      "choices": [
+        "드문",
+        "곳곳에 있는",
+        "숨어있는",
+        "사라진"
+      ],
+      "answer": 2
+    },
+    {
+      "question": "'eloquent'의 뜻은?",
+      "choices": [
+        "말을 못하는",
+        "설득력 있고 유창한",
+        "침묵하는",
+        "외로운"
+      ],
+      "answer": 2
+    },
+    {
+      "question": "'meticulous'의 뜻은?",
+      "choices": [
+        "부주의한",
+        "매우 조심스럽고 세밀한",
+        "빠른",
+        "느린"
+      ],
+      "answer": 2
+    },
+    {
+      "question": "'pragmatic'의 뜻은?",
+      "choices": [
+        "이상적인",
+        "실용적인",
+        "학문적인",
+        "철학적인"
+      ],
+      "answer": 2
+    }
+  ],
+  "best_score": {
+    "correct": 7,
+    "total": 8,
+    "percentage": 87.5
+  }
+}
