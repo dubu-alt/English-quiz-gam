@@ -22,8 +22,16 @@ english-quiz-game/
 ├── .gitignore            # Git 무시 파일 목록
 └── .git/                 # Git 저장소 정보
 ```
----
 
+## 브랜치 구조
+```
+main (메인 브랜치)
+  ├─ feature/play-quiz (퀴즈 풀기)
+  ├─ feature/add-quiz (퀴즈 추가)
+  ├─ feature/list-quizzes (퀴즈 목록)
+  ├─ feature/score-management (점수 관리)
+  └─ feature/file-io (파일 저장/로드)
+```
 ---
 
 ## 퀴즈 주제와 선정 이유
