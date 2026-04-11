@@ -636,3 +636,6 @@ def main():
     
     # game.run(): 게임 시작
     game.run()
+
+if __name__ == "__main__":
+    main()
