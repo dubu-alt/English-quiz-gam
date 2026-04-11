@@ -441,3 +441,25 @@ class QuizGame:
             total = self.best_score["total"]
             percentage = self.best_score["percentage"]
             print(f"최고 점수: {correct}/{total} ({percentage:.1f}%)")
+
+    def update_best_score(self, correct, total):
+        """
+        최고 점수를 갱신하는 메서드
+        
+        동작:
+            1. 현재 정답 수가 최고 기록보다 높으면
+            2. 최고 점수 정보를 업데이트
+        
+        correct: 현재 정답 개수
+        total: 현재 총 문제 수
+        """
+        # 정답률 계산
+        percentage = (correct / total) * 100 if total > 0 else 0
+        
+        # 현재 점수가 최고 기록보다 높으면 갱신
+        if correct > self.best_score["correct"]:
+            self.best_score = {
+                "correct": correct,
+                "total": total,
+                "percentage": percentage
+            }
