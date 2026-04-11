@@ -420,3 +420,24 @@ class QuizGame:
                 # 정답은 ✓, 아니면 공백
                 mark = "✓" if choice_idx == quiz.answer else " "
                 print(f"   [{mark}] {choice_idx}. {choice}")
+
+    def display_best_score(self):
+        """
+        최고 점수를 보여주는 메서드
+        
+        동작:
+            1. 점수가 있는지 확인
+            2. 있으면 정답 개수, 총 문제 수, 정답률 출력
+            3. 없으면 안내 메시지 출력
+        """
+        print("\n🏆 최고 점수")
+        print("-" * 50)
+        
+        # best_score의 total이 0이면 아직 퀴즈를 풀지 않은 것
+        if self.best_score["total"] == 0:
+            print("아직 퀴즈를 풀지 않았습니다.")
+        else:
+            correct = self.best_score["correct"]
+            total = self.best_score["total"]
+            percentage = self.best_score["percentage"]
+            print(f"최고 점수: {correct}/{total} ({percentage:.1f}%)")
