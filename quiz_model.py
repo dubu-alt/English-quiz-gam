@@ -1,3 +1,12 @@
+import json # JSON 파일 처리
+import os   # 파일 존재 여부 확인
+import sys  # 프로그램 제어
+
+# import: 파이썬 표준 라이브러리를 불러옴
+# json: 파일 데이터 저장 및 불러올 때 사용
+# os: 파일 있는지 확인할 때 사용
+# sys: 프로그램 종료할 때 사용
+
 # ============================================================================
 # Quiz 클래스 정의 관련
 # ============================================================================
@@ -233,7 +242,7 @@ class QuizGame:
                 
                 # 빈 입력 확인
                 if not choice:  # not: 거짓이면 참, 참이면 거짓 (반대)
-                    print("❌ 빈 입력입니다. 1~5 사이의 숫자를 입력해주세요.")
+                    print("빈 입력입니다. 1~5 사이의 숫자를 입력해주세요.")
                     continue  # 이 반복을 건너뛰고 while 루프의 처음으로 돌아감
                 
                 # int(): 문자열을 정수로 변환하는 함수
@@ -244,7 +253,7 @@ class QuizGame:
                 # and: 두 조건이 모두 참이어야 참
                 # or: 두 조건 중 하나라도 참이면 참
                 if not (1 <= choice_num <= 5):
-                    print("❌ 1~5 사이의 숫자를 입력해주세요.")
+                    print("X 1~5 사이의 숫자를 입력해주세요.")
                     continue
                 
                 # 모든 조건을 통과했으면 숫자를 반환
@@ -253,7 +262,7 @@ class QuizGame:
             # except: try 블록에서 에러가 발생했을 때 실행
             except ValueError:
                 # 숫자가 아닌 것을 입력했을 때 발생하는 에러
-                print("❌ 숫자를 입력해주세요.")
+                print("X 숫자를 입력해주세요.")
 
     def play_quiz(self):
         """
@@ -269,7 +278,7 @@ class QuizGame:
         """
         # 퀴즈가 없으면 함수 종료
         if not self.quizzes:  # not: 빈 리스트는 거짓
-            print("\n❌ 등록된 퀴즈가 없습니다.")
+            print("\nX 등록된 퀴즈가 없습니다.")
             return  # 함수 종료
         
         # 총 문제 수 출력
@@ -294,27 +303,27 @@ class QuizGame:
                     answer = input("답 (1-4): ").strip()
                     
                     if not answer:
-                        print("❌ 빈 입력입니다. 1~4 사이의 숫자를 입력해주세요.")
+                        print("빈 입력입니다. 1~4 사이의 숫자를 입력해주세요.")
                         continue
                     
                     answer_num = int(answer)
                     
                     if not (1 <= answer_num <= 4):
-                        print("❌ 1~4 사이의 숫자를 입력해주세요.")
+                        print("1~4 사이의 숫자를 입력해주세요.")
                         continue
                     
                     break  # 올바른 입력을 받으면 while 루프 탈출
                 
                 except ValueError:
-                    print("❌ 숫자를 입력해주세요.")
+                    print("숫자를 입력해주세요.")
             
             # 답 확인
             if quiz.check_answer(answer_num):
-                print("✅ 정답입니다!")
+                print("정답입니다!")
                 correct_count += 1  # +=: 기존 값에 1을 더하기
             else:
                 # 오답일 때 정답을 알려줌
-                print(f"❌ 오답입니다. 정답: {quiz.answer}번 ({quiz.choices[quiz.answer - 1]})")
+                print(f"오답입니다. 정답: {quiz.answer}번 ({quiz.choices[quiz.answer - 1]})")
         
         # 최종 결과 표시
         # /: 나누기
@@ -342,7 +351,7 @@ class QuizGame:
             5. quizzes 리스트에 추가
             6. 파일에 저장
         """
-        print("\n📚 새 퀴즈 추가")
+        print("\n새 퀴즈 추가")
         print("-" * 50)
         
         # 문제 입력받기
@@ -351,7 +360,7 @@ class QuizGame:
             question = input("문제를 입력하세요: ").strip()
             if question:  # 문자열이 비어있지 않으면 참
                 break  # while 루프 탈출
-            print("❌ 빈 입력입니다. 문제를 입력해주세요.")
+            print("빈 입력입니다. 문제를 입력해주세요.")
         
         # 선택지 입력받기
         choices = []  # 빈 리스트 생성
@@ -360,7 +369,7 @@ class QuizGame:
                 choice = input(f"선택지 {i+1}을(를) 입력하세요: ").strip()
                 if choice:
                     break
-                print("❌ 빈 입력입니다. 선택지를 입력해주세요.")
+                print("빈 입력입니다. 선택지를 입력해주세요.")
             
             # append(): 리스트에 요소를 추가하는 메서드
             choices.append(choice)
@@ -371,26 +380,26 @@ class QuizGame:
                 answer = input("정답 번호 (1-4): ").strip()
                 
                 if not answer:
-                    print("❌ 빈 입력입니다. 1~4 사이의 숫자를 입력해주세요.")
+                    print("빈 입력입니다. 1~4 사이의 숫자를 입력해주세요.")
                     continue
                 
                 answer_num = int(answer)
                 
                 if not (1 <= answer_num <= 4):
-                    print("❌ 1~4 사이의 숫자를 입력해주세요.")
+                    print("1~4 사이의 숫자를 입력해주세요.")
                     continue
                 
                 break
             
             except ValueError:
-                print("❌ 숫자를 입력해주세요.")
+                print("숫자를 입력해주세요.")
         
         # 새로운 Quiz 객체 생성
         new_quiz = Quiz(question, choices, answer_num)
         
         # 리스트에 추가
         self.quizzes.append(new_quiz)
-        print("✅ 퀴즈가 추가되었습니다.")
+        print("퀴즈가 추가되었습니다.")
         
         # 파일에 저장
         self.save_data()
@@ -405,7 +414,7 @@ class QuizGame:
             3. 정답은 ✓ 마크로 표시
         """
         if not self.quizzes:
-            print("\n❌ 등록된 퀴즈가 없습니다.")
+            print("\n등록된 퀴즈가 없습니다.")
             return
         
         print(f"\n📋 퀴즈 목록 (총 {len(self.quizzes)}개)")
@@ -497,7 +506,7 @@ class QuizGame:
         
         # IOError, OSError: 파일 입출력 중 발생하는 에러
         except (IOError, OSError) as e:
-            print(f"⚠️ 데이터 저장 중 오류가 발생했습니다: {e}")
+            print(f"데이터 저장 중 오류가 발생했습니다: {e}")
 
     def load_data(self):
         """
@@ -532,20 +541,20 @@ class QuizGame:
             
             # 저장된 퀴즈가 없으면 기본 퀴즈 사용
             if not self.quizzes:
-                print("⚠️ 저장된 퀴즈가 없어서 기본 퀴즈를 사용합니다.")
+                print("저장된 퀴즈가 없어서 기본 퀴즈를 사용합니다.")
                 self.quizzes = self.default_quizzes
                 self.save_data()
         
         # JSONDecodeError: JSON 파일이 손상되었을 때 발생
         except json.JSONDecodeError:
-            print(f"⚠️ '{self.data_file}' 파일이 손상되었습니다. 기본 퀴즈를 사용합니다.")
+            print(f"'{self.data_file}' 파일이 손상되었습니다. 기본 퀴즈를 사용합니다.")
             self.quizzes = self.default_quizzes
             self.best_score = {"correct": 0, "total": 0, "percentage": 0.0}
             self.save_data()
         
         # 기타 파일 에러
         except (IOError, OSError) as e:
-            print(f"⚠️ 데이터 로드 중 오류가 발생했습니다: {e}")
+            print(f"데이터 로드 중 오류가 발생했습니다: {e}")
             self.quizzes = self.default_quizzes
             self.best_score = {"correct": 0, "total": 0, "percentage": 0.0}
 
@@ -560,7 +569,7 @@ class QuizGame:
             4. 종료할 때까지 반복
             5. 프로그램 종료 또는 에러 발생하면 데이터 저장 후 종료
         """
-        print("\n🎮 영어 단어 퀴즈 게임에 오신 것을 환영합니다!")
+        print("\n영어 단어 퀴즈 게임에 오신 것을 환영합니다!")
         
         # while True: 무한 반복 (break를 만날 때까지)
         while True:
@@ -598,24 +607,24 @@ class QuizGame:
             
             # KeyboardInterrupt: Ctrl+C를 눌렀을 때 발생
             except KeyboardInterrupt:
-                print("\n\n⚠️ Ctrl+C로 인한 중단이 감지되었습니다.")
-                print("📝 데이터를 저장하고 안전하게 종료합니다...")
+                print("\n\n Ctrl+C로 인한 중단이 감지되었습니다.")
+                print("데이터를 저장하고 안전하게 종료합니다...")
                 self.save_data()
-                print("👋 게임을 종료합니다.")
+                print("게임을 종료합니다.")
                 break
             
             # EOFError: 입력 스트림이 종료되었을 때 발생
             # (주로 파이프라인이나 스크립트에서 입력이 끝났을 때)
             except EOFError:
-                print("\n⚠️ 입력 스트림이 종료되었습니다.")
-                print("📝 데이터를 저장하고 안전하게 종료합니다...")
+                print("\n입력 스트림이 종료되었습니다.")
+                print("데이터를 저장하고 안전하게 종료합니다...")
                 self.save_data()
                 print("👋 게임을 종료합니다.")
                 break
             
             # 예상치 못한 에러 처리
             except Exception as e:
-                print(f"❌ 예상치 못한 오류가 발생했습니다: {e}")
+                print(f"예상치 못한 오류가 발생했습니다: {e}")
                 print("계속하려면 엔터를 누르세요...")
                 try:
                     input()
