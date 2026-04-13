@@ -18,4 +18,5 @@
 
 ## 5. Git log
 ![git_log.png](./images/git_log.png)
+![git_log(2).png] (./images/git_log(2).png)
 --
